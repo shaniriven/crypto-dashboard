@@ -1,6 +1,6 @@
 export interface IUser {
   _id: string;
-  name: string;
+  username: string;
   email: string;
   onBoarding_done: boolean;
   preferences?: {

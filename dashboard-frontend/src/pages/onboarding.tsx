@@ -89,14 +89,21 @@ export default function Onboarding() {
         setLoading(true);
         const userPreferences = buildUserPreferences();
         try {
+            const token = localStorage.getItem("token");
             const res = await api.post("/user/preferences", {
                 assets: userPreferences.cryptoAssets,
                 investorType: userPreferences.investorProfiles,
                 contentTypes: userPreferences.contentPreferences
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
             });
-            navigate("/dashboard");
+            if (res.status === 200) {
+                navigate("/dashboard");
+            }
         } catch (error) {
             console.error("Error saving preferences:", error);
+        } finally {
+            setLoading(false);
         }
     }
 

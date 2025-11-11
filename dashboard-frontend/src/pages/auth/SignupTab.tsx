@@ -24,16 +24,16 @@ export default function SignupTab() {
     const signup = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const res = await api.post("/auth/signup", { name: username, email, password });
+            const res = await api.post("/auth/signup", { username, email, password });
             if (res.status === 201) {
-                const loginRes = await api.post("/auth/login", { email, password });
+                const loginRes = await api.post("/auth/login", { username, password });
                 localStorage.setItem("token", loginRes.data.token);
-                localStorage.setItem("user", JSON.stringify(res.data.user));
+                localStorage.setItem("user", JSON.stringify(loginRes.data.user));
             }
             navigate("/onboarding");
         } catch (error: any) {
-            if (error.response?.data?.message) {
-                setErrorMessage(error.response.data.message);
+            if (error.response?.data?.error) {
+                setErrorMessage(error.response.data.error);
             } else {
                 setErrorMessage('An unexpected error occurred. Please try again.');
             }

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function LoginTab() {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
@@ -16,14 +16,14 @@ export default function LoginTab() {
     const login = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const res = await api.post("/auth/login", { email, password });
+            const res = await api.post("/auth/login", { username, password });
             const currentUser = await api.get("/auth/currentUser", {
                 headers: { Authorization: `Bearer ${res.data.token}` }
             });
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(currentUser.data));
 
-            if (currentUser.data.onboarding_done) {
+            if (currentUser.data.onBoarding_done) {
                 navigate("/dashboard");
             } else {
                 navigate("/onboarding");
@@ -47,7 +47,7 @@ export default function LoginTab() {
                     <div className="grid gap-3">
                         <InputGroup>
                             <InputGroupInput placeholder="Enter username" id="username"
-                            />
+                                value={username} onChange={(e) => setUsername(e.target.value)} />
                             <InputGroupAddon>
                                 <User />
                             </InputGroupAddon>
@@ -57,7 +57,7 @@ export default function LoginTab() {
                     <div className="grid gap-3">
                         <InputGroup>
                             <InputGroupInput placeholder="Enter password" type="password" id="password"
-                            />
+                                value={password} onChange={(e) => setPassword(e.target.value)} />
                             <InputGroupAddon>
                                 <Lock />
                             </InputGroupAddon>

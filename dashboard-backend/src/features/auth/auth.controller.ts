@@ -4,8 +4,8 @@ import { User } from "./user.model";
 
 export const signup = async (req: Request, res: Response) => {
   try {
-    const { name, email, password } = req.body;
-    const user = await AuthService.signup(name, email, password);
+    const { username, email, password } = req.body;
+    const user = await AuthService.signup(username, email, password);
     res.status(201).json({ message: "User created", user });
   } catch (err: any) {
     res.status(400).json({ error: err.message });
@@ -14,8 +14,8 @@ export const signup = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   try {
-    const { email, password } = req.body;
-    const data = await AuthService.login(email, password);
+    const { username, password } = req.body;
+    const data = await AuthService.login(username, password);
     res.json(data);
   } catch (err: any) {
     res.status(400).json({ error: err.message });
