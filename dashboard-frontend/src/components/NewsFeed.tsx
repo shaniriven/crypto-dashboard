@@ -1,6 +1,7 @@
 import type { INewsItem } from "@/types/dashboard";
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { VoteButtons } from "./VoteButtons";
 
 interface NewsFeedProps {
     news: INewsItem[];
@@ -34,16 +35,13 @@ export function NewsFeed({ news }: NewsFeedProps) {
             <CardContent>
                 <div className="space-y-4">
                     {news && news.length > 0 ? news.map((post) => (
-                        <a
+                        <div
                             key={post.id}
-                            href={post.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block p-3 rounded-lg border hover:bg-accent transition-colors cursor-pointer group"
+                            className="block p-3 rounded-lg border hover:bg-accent transition-colors"
                         >
                             <div className="flex items-start justify-between gap-2">
                                 <div className="flex-1">
-                                    <h3 className="font-medium group-hover:text-primary line-clamp-2 mb-1">
+                                    <h3 className="font-medium line-clamp-2 mb-1">
                                         {post.title}
                                     </h3>
                                     {post.description && (
@@ -56,10 +54,19 @@ export function NewsFeed({ news }: NewsFeedProps) {
                                         <span>•</span>
                                         <span>{formatTimeAgo(post.publishedAt)}</span>
                                     </div>
+                                    <VoteButtons postType="News" data={{ news_id: post.id }} />
                                 </div>
-                                <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary flex-shrink-0" />
+                                <a
+                                    href={post.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-muted-foreground hover:text-primary transition-colors"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                                </a>
                             </div>
-                        </a>
+                        </div>
                     )) : (
                         <p className="text-sm text-muted-foreground text-center py-4">No news available</p>
                     )}

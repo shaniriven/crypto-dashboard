@@ -1,4 +1,4 @@
-import { CryptodashTitle } from "@/components/dashTitle"
+import { CryptodashTitle } from "@/components/DashTitle"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -107,35 +107,6 @@ export default function Onboarding() {
         }
     }
 
-    // const handleFinish = async () => {
-    //     setLoading(true);
-    //     setHasError(false);
-    //     setErrorMessage('');
-
-    //     try {
-    //         const userPreferences = buildUserPreferences();
-    //         console.log('Submitting preferences:', userPreferences);
-
-    //         const response = await onboardingService.submitPreferences(userPreferences);
-    //         console.log('Preferences submitted successfully:', response.data);
-
-    //         localStorage.setItem("onboarding_done", "true");
-
-    //         navigate("/dashboard");
-    //     } catch (error) {
-    //         setHasError(true);
-    //         if (isAxiosError(error)) {
-    //             const axiosError = error as AxiosError<{ message: string }>;
-    //             setErrorMessage(axiosError.response?.data?.message || 'Failed to submit preferences. Please try again.');
-    //         } else if (error instanceof Error) {
-    //             setErrorMessage(error.message);
-    //         } else {
-    //             setErrorMessage('Failed to submit preferences. Please try again.');
-    //         }
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // }
 
     const next = () => {
         if (stepIndex < steps.length - 1) setStepIndex(stepIndex + 1)

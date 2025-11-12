@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LoginTab from "@/pages/auth/LoginTab";
-import { CryptodashTitle } from "../../components/dashTitle";
+import { CryptodashTitle } from "../../components/DashTitle";
 import SignupTab from "./SignupTab";
 
 export default function AuthTabs() {
