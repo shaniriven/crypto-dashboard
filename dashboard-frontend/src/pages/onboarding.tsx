@@ -1,4 +1,4 @@
-import { CryptodashTitle } from "@/components/DashTitle"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -119,7 +119,11 @@ export default function Onboarding() {
         <div className="min-h-screen flex items-center justify-center p-6">
             <Card className="w-full max-w-lg">
                 <div className="flex flex-col items-center ">
-                    <CryptodashTitle />
+                    <h1 className="text-5xl font-extrabold tracking-tight select-none mb-10">
+                        <span className="text-transparent bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 bg-clip-text drop-shadow-[0_0_15px_rgba(100,100,100,0.6)]">
+                            CryptoDash
+                        </span>
+                    </h1>
                     <span className="text-md font-normal text-muted-foreground">
                         Personalize your experience
                     </span>

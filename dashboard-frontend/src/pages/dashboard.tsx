@@ -1,4 +1,3 @@
-import { CryptodashTitle } from '@/components/DashTitle';
 import { InsightCard } from '@/components/InsightCard';
 import { MemeCard } from '@/components/MemeCard';
 import { NewsFeed } from '@/components/NewsFeed';
@@ -124,7 +123,11 @@ const Dashboard: React.FC = () => {
                     <div className="flex justify-between items-center ">
                         {/* Title */}
                         <div className="flex items-center gap-3 mt-3">
-                            <CryptodashTitle />
+                            <h1 className="text-5xl font-extrabold tracking-tight select-none mb-10">
+                                <span className="text-transparent bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 bg-clip-text drop-shadow-[0_0_15px_rgba(100,100,100,0.6)]">
+                                    CryptoDash
+                                </span>
+                            </h1>
                         </div>
 
                         {/* User Info & Logout */}
