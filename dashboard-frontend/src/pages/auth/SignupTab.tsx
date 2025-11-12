@@ -11,7 +11,6 @@ export default function SignupTab() {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -32,11 +31,7 @@ export default function SignupTab() {
             }
             navigate("/onboarding");
         } catch (error: any) {
-            if (error.response?.data?.error) {
-                setErrorMessage(error.response.data.error);
-            } else {
-                setErrorMessage('An unexpected error occurred. Please try again.');
-            }
+            console.error('Signup failed:', error);
         }
     }
 

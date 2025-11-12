@@ -11,7 +11,13 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173", // Local development
+    "https://your-vercel-app-url.vercel.app" // Replace with your actual Vercel URL
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 app.use("/auth", authRoutes);
